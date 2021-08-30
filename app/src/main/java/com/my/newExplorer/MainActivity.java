@@ -108,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
 	private LinearLayout linear;
 	private SwipeRefreshLayout swiperefreshlayout1;
 	private LinearLayout linear1;
+	private ImageView imageview17;
 	private ImageView imageview21;
 	private ImageView imageview15;
 	private ImageView lock;
@@ -122,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
 	private TextView textview3;
 	private ProgressBar prog;
 	private WebView webview1;
-	private ImageView imageview17;
 	
 	private SharedPreferences shared;
 	private SpeechRecognizer Sp;
@@ -198,6 +198,7 @@ public class MainActivity extends AppCompatActivity {
 		linear = (LinearLayout) findViewById(R.id.linear);
 		swiperefreshlayout1 = (SwipeRefreshLayout) findViewById(R.id.swiperefreshlayout1);
 		linear1 = (LinearLayout) findViewById(R.id.linear1);
+		imageview17 = (ImageView) findViewById(R.id.imageview17);
 		imageview21 = (ImageView) findViewById(R.id.imageview21);
 		imageview15 = (ImageView) findViewById(R.id.imageview15);
 		lock = (ImageView) findViewById(R.id.lock);
@@ -214,7 +215,6 @@ public class MainActivity extends AppCompatActivity {
 		webview1 = (WebView) findViewById(R.id.webview1);
 		webview1.getSettings().setJavaScriptEnabled(true);
 		webview1.getSettings().setSupportZoom(true);
-		imageview17 = (ImageView) findViewById(R.id.imageview17);
 		shared = getSharedPreferences("shared", Activity.MODE_PRIVATE);
 		Sp = SpeechRecognizer.createSpeechRecognizer(this);
 		V = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -241,6 +241,58 @@ public class MainActivity extends AppCompatActivity {
 		weberror = new RequestNetwork(this);
 		stop = getSharedPreferences("stop", Activity.MODE_PRIVATE);
 		clear = getSharedPreferences("clear", Activity.MODE_PRIVATE);
+		
+		imageview17.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				if (!homepage.getString("homepage", "").equals("")) {
+					webview1.loadUrl(homepage.getString("homepage", ""));
+				}
+				else {
+					LinearLayout mylayout = new LinearLayout(MainActivity.this);
+					
+					LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+					
+					mylayout.setLayoutParams(params); mylayout.setOrientation(LinearLayout.VERTICAL);
+					
+					final EditText myedittext = new EditText(MainActivity.this);
+					myedittext.setLayoutParams(new LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT));
+					 
+					mylayout.addView(myedittext);
+					home.setView(mylayout);
+					myedittext.setHint(homelink);
+					myedittext.setHintTextColor(0xFF9E9E9E);
+					if (mode.getString("darkmode", "").equals("true")) {
+						myedittext.setTextColor(0xFFFFFFFF);
+					}
+					else {
+						myedittext.setTextColor(0xFF000000);
+					}
+					home.setTitle(title_home);
+					home.setPositiveButton(set, new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface _dialog, int _which) {
+							if (Patterns.WEB_URL.matcher(myedittext.getText().toString()).matches())
+							{
+								homepage.edit().putString("homepage", myedittext.getText().toString()).commit();
+								webview1.loadUrl(homepage.getString("homepage", ""));
+							}
+							else
+							{
+								homepage.edit().putString("homepage", "").commit();
+							}
+						}
+					});
+					home.setNegativeButton(cancel, new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface _dialog, int _which) {
+							
+						}
+					});
+					home.create().show();
+				}
+			}
+		});
 		
 		imageview21.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -422,58 +474,6 @@ public class MainActivity extends AppCompatActivity {
 				swiperefreshlayout1.setRefreshing(false);
 				url.edit().putString("url", _url).commit();
 				super.onPageFinished(_param1, _param2);
-			}
-		});
-		
-		imageview17.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View _view) {
-				if (!homepage.getString("homepage", "").equals("")) {
-					webview1.loadUrl(homepage.getString("homepage", ""));
-				}
-				else {
-					LinearLayout mylayout = new LinearLayout(MainActivity.this);
-					
-					LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-					
-					mylayout.setLayoutParams(params); mylayout.setOrientation(LinearLayout.VERTICAL);
-					
-					final EditText myedittext = new EditText(MainActivity.this);
-					myedittext.setLayoutParams(new LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT));
-					 
-					mylayout.addView(myedittext);
-					home.setView(mylayout);
-					myedittext.setHint(homelink);
-					myedittext.setHintTextColor(0xFF9E9E9E);
-					if (mode.getString("darkmode", "").equals("true")) {
-						myedittext.setTextColor(0xFFFFFFFF);
-					}
-					else {
-						myedittext.setTextColor(0xFF000000);
-					}
-					home.setTitle(title_home);
-					home.setPositiveButton(set, new DialogInterface.OnClickListener() {
-						@Override
-						public void onClick(DialogInterface _dialog, int _which) {
-							if (Patterns.WEB_URL.matcher(myedittext.getText().toString()).matches())
-							{
-								homepage.edit().putString("homepage", myedittext.getText().toString()).commit();
-								webview1.loadUrl(homepage.getString("homepage", ""));
-							}
-							else
-							{
-								homepage.edit().putString("homepage", "").commit();
-							}
-						}
-					});
-					home.setNegativeButton(cancel, new DialogInterface.OnClickListener() {
-						@Override
-						public void onClick(DialogInterface _dialog, int _which) {
-							
-						}
-					});
-					home.create().show();
-				}
 			}
 		});
 		

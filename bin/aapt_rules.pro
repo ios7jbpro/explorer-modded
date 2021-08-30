@@ -263,7 +263,7 @@
 # view res/layout/ayp_default_player_ui.xml #generated:110
 -keep class com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.views.YouTubePlayerSeekBar { <init>(...); }
 
-# view res/layout/info.xml #generated:138
-# view res/layout/info.xml #generated:98
+# view res/layout/info.xml #generated:119
+# view res/layout/info.xml #generated:159
 -keep class de.hdodenhof.circleimageview.CircleImageView { <init>(...); }
 

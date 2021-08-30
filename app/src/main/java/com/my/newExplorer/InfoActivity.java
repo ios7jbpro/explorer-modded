@@ -46,10 +46,12 @@ public class InfoActivity extends AppCompatActivity {
 	private LinearLayout linear10;
 	private LinearLayout linear13;
 	private ImageView imageview1;
-	private TextView textview1;
+	private LinearLayout linear15;
 	private TextView textview7;
 	private TextView textandroidversion;
 	private TextView textmodel;
+	private TextView textview1;
+	private TextView textview14;
 	private TextView textview8;
 	private CircleImageView circleimageview2;
 	private LinearLayout linear12;
@@ -81,10 +83,12 @@ public class InfoActivity extends AppCompatActivity {
 		linear10 = (LinearLayout) findViewById(R.id.linear10);
 		linear13 = (LinearLayout) findViewById(R.id.linear13);
 		imageview1 = (ImageView) findViewById(R.id.imageview1);
-		textview1 = (TextView) findViewById(R.id.textview1);
+		linear15 = (LinearLayout) findViewById(R.id.linear15);
 		textview7 = (TextView) findViewById(R.id.textview7);
 		textandroidversion = (TextView) findViewById(R.id.textandroidversion);
 		textmodel = (TextView) findViewById(R.id.textmodel);
+		textview1 = (TextView) findViewById(R.id.textview1);
+		textview14 = (TextView) findViewById(R.id.textview14);
 		textview8 = (TextView) findViewById(R.id.textview8);
 		circleimageview2 = (CircleImageView) findViewById(R.id.circleimageview2);
 		linear12 = (LinearLayout) findViewById(R.id.linear12);

@@ -49,33 +49,6 @@
 				android:orientation="vertical"
 				android:layout_gravity="center_horizontal">
 				<LinearLayout
-					android:id="@+id/linear9"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:background="@android:color/transparent"
-					android:orientation="horizontal">
-					<ImageView
-						android:id="@+id/imageview6"
-						android:layout_width="30dp"
-						android:layout_height="match_parent"
-						android:src="@drawable/ic_beenhere_black"
-						android:scaleType="fitCenter"/>
-					<ImageView
-						android:id="@+id/imageview7"
-						android:layout_width="30dp"
-						android:layout_height="match_parent"
-						android:src="@drawable/ic_beenhere_white"
-						android:scaleType="fitCenter"/>
-					<Button
-						android:id="@+id/button11"
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:padding="8dp"
-						android:text="check update"
-						android:textSize="16sp"
-						android:textColor="#000000"/>
-				</LinearLayout>
-				<LinearLayout
 					android:id="@+id/linear5"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"

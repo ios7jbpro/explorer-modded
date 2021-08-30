@@ -76,7 +76,6 @@ public class SettingsActivity extends AppCompatActivity {
 	private LinearLayout linear21;
 	private Button button12;
 	private TextView textview1;
-	private LinearLayout linear9;
 	private LinearLayout linear5;
 	private LinearLayout linear10;
 	private LinearLayout linear3;
@@ -84,9 +83,6 @@ public class SettingsActivity extends AppCompatActivity {
 	private LinearLayout linear14;
 	private LinearLayout linear22;
 	private LinearLayout linear15;
-	private ImageView imageview6;
-	private ImageView imageview7;
-	private Button button11;
 	private ImageView imageview4;
 	private ImageView imageview9;
 	private Button button2;
@@ -166,7 +162,6 @@ public class SettingsActivity extends AppCompatActivity {
 		linear21 = (LinearLayout) findViewById(R.id.linear21);
 		button12 = (Button) findViewById(R.id.button12);
 		textview1 = (TextView) findViewById(R.id.textview1);
-		linear9 = (LinearLayout) findViewById(R.id.linear9);
 		linear5 = (LinearLayout) findViewById(R.id.linear5);
 		linear10 = (LinearLayout) findViewById(R.id.linear10);
 		linear3 = (LinearLayout) findViewById(R.id.linear3);
@@ -174,9 +169,6 @@ public class SettingsActivity extends AppCompatActivity {
 		linear14 = (LinearLayout) findViewById(R.id.linear14);
 		linear22 = (LinearLayout) findViewById(R.id.linear22);
 		linear15 = (LinearLayout) findViewById(R.id.linear15);
-		imageview6 = (ImageView) findViewById(R.id.imageview6);
-		imageview7 = (ImageView) findViewById(R.id.imageview7);
-		button11 = (Button) findViewById(R.id.button11);
 		imageview4 = (ImageView) findViewById(R.id.imageview4);
 		imageview9 = (ImageView) findViewById(R.id.imageview9);
 		button2 = (Button) findViewById(R.id.button2);
@@ -233,15 +225,6 @@ public class SettingsActivity extends AppCompatActivity {
 				i.setClass(getApplicationContext(), MainActivity.class);
 				startActivity(i);
 				finish();
-			}
-		});
-		
-		button11.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View _view) {
-				check.setAction(Intent.ACTION_VIEW);
-				check.setData(Uri.parse("https://t.me/Explorer_browser"));
-				startActivity(check);
 			}
 		});
 		
@@ -324,8 +307,8 @@ public class SettingsActivity extends AppCompatActivity {
 					textview8.setTextColor(0xFFFFFFFF);
 					imageview4.setVisibility(View.GONE);
 					
-					imageview6.setVisibility(View.GONE);
-					imageview7.setVisibility(View.VISIBLE);
+					
+					
 					imageview9.setVisibility(View.VISIBLE);
 					
 					linear1.setBackgroundColor(0xFF212121);
@@ -351,8 +334,8 @@ public class SettingsActivity extends AppCompatActivity {
 					textview8.setTextColor(0xFF000000);
 					imageview4.setVisibility(View.VISIBLE);
 					
-					imageview6.setVisibility(View.VISIBLE);
-					imageview7.setVisibility(View.GONE);
+					
+					
 					
 					imageview9.setVisibility(View.GONE);
 					spinner1.setBackgroundResource(R.drawable.ic_arrow_drop_down_black);
@@ -595,8 +578,9 @@ public class SettingsActivity extends AppCompatActivity {
 	private void initializeLogic() {
 		_removeScollBar(hscroll1);
 		_circleRipple("#9E9E9E", imageviewadd);
-		imageview7.setVisibility(View.GONE);
 		imageview9.setVisibility(View.GONE);
+		View a = getWindow().getDecorView();
+		a.setSystemUiVisibility(0);
 		if (mode.getString("darkmode", "").equals("true")) {
 			textview1.setTextColor(0xFFFFFFFF);
 			textview3.setTextColor(0xFFFFFFFF);
@@ -605,8 +589,6 @@ public class SettingsActivity extends AppCompatActivity {
 			textview7.setTextColor(0xFFFFFFFF);
 			textview8.setTextColor(0xFFFFFFFF);
 			imageview4.setVisibility(View.GONE);
-			imageview6.setVisibility(View.GONE);
-			imageview7.setVisibility(View.VISIBLE);
 			imageview9.setVisibility(View.VISIBLE);
 			linear1.setBackgroundColor(0xFF212121);
 			vscroll1.setBackgroundColor(0xFF212121);
@@ -625,6 +607,11 @@ public class SettingsActivity extends AppCompatActivity {
 			button15.setBackgroundColor(0xFF000000);
 			textview14.setTextColor(0xFFFFFFFF);
 			button16.setBackgroundColor(0xFF000000);
+			if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+				Window w =SettingsActivity.this.getWindow();
+				w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+				w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFF000000);
+			}
 		}
 		else {
 			textview1.setTextColor(0xFF000000);
@@ -634,8 +621,6 @@ public class SettingsActivity extends AppCompatActivity {
 			textview7.setTextColor(0xFF000000);
 			textview8.setTextColor(0xFF000000);
 			imageview4.setVisibility(View.VISIBLE);
-			imageview6.setVisibility(View.VISIBLE);
-			imageview7.setVisibility(View.GONE);
 			imageview9.setVisibility(View.GONE);
 			spinner1.setBackgroundResource(R.drawable.ic_arrow_drop_down_black);
 			linear1.setBackgroundColor(0xFFFFFFFF);
@@ -654,6 +639,13 @@ public class SettingsActivity extends AppCompatActivity {
 			button15.setBackgroundColor(0xFFFFFFFF);
 			textview14.setTextColor(0xFF000000);
 			button16.setBackgroundColor(0xFFFFFFFF);
+			getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+			getWindow().setStatusBarColor(0xFFFFFFFF);
+			if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+				Window w =SettingsActivity.this.getWindow();
+				w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+				w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFFFFFFFF);
+			}
 		}
 		if (s.getString("language", "").equals("english")) {
 			textview1.setText("Settings");
@@ -661,7 +653,6 @@ public class SettingsActivity extends AppCompatActivity {
 			textview3.setText("Search engine");
 			textview6.setText("Cookies");
 			textview7.setText("Run HTML");
-			button11.setText("check update");
 			button2.setText("about");
 			button12.setText("SAVE Settings");
 			textview5.setText("Home Page");
@@ -688,9 +679,6 @@ public class SettingsActivity extends AppCompatActivity {
 				textview2.setText("حالت تاریک");
 				textview3.setText("موتور جستجو");
 				textview6.setText("کوکی ها ");
-				textview7.setText("اجرای HTML");
-				button11.setText("بررسی بروزرسانی");
-				button2.setText("درباره");
 				button12.setText("ذخیره تنظیمات");
 				textview5.setText("صفحه اصلی");
 				textview8.setText("اندازه متن");
@@ -709,6 +697,8 @@ public class SettingsActivity extends AppCompatActivity {
 				button15.setText("نمایش خطاها");
 				textview14.setText("پاک کننده Explorer");
 				button16.setText("انتخاب حالت");
+				button2.setText("درباره");
+				textview7.setText("اجرای HTML");
 			}
 			else {
 				if (s.getString("language", "").equals("china")) {
@@ -717,7 +707,6 @@ public class SettingsActivity extends AppCompatActivity {
 					textview2.setText(" 暗模式");
 					textview6.setText(" 曲奇饼 ");
 					textview7.setText(" 运行HTML ");
-					button11.setText("检查更新");
 					button2.setText("关于");
 					textview5.setText("主页");
 					button12.setText("保存设置");
