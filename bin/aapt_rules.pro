@@ -191,68 +191,65 @@
 # view res/layout/material_chip_input_combo.xml #generated:18
 -keep class com.google.android.material.timepicker.ChipTextInputComboView { <init>(...); }
 
-# view AndroidManifest.xml #generated:137
+# view AndroidManifest.xml #generated:132
 -keep class com.google.firebase.components.ComponentDiscoveryService { <init>(...); }
 
-# view AndroidManifest.xml #generated:151
+# view AndroidManifest.xml #generated:146
 -keep class com.google.firebase.iid.FirebaseInstanceIdReceiver { <init>(...); }
 
-# view AndroidManifest.xml #generated:144
+# view AndroidManifest.xml #generated:139
 -keep class com.google.firebase.messaging.FirebaseMessagingService { <init>(...); }
 
-# view AndroidManifest.xml #generated:132
+# view AndroidManifest.xml #generated:127
 -keep class com.google.firebase.provider.FirebaseInitProvider { <init>(...); }
 
-# view AndroidManifest.xml #generated:120
-# view AndroidManifest.xml #generated:126
+# view AndroidManifest.xml #generated:115
+# view AndroidManifest.xml #generated:121
 -keep class com.my.newExplorer.DebugActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:61
+# view AndroidManifest.xml #generated:56
 -keep class com.my.newExplorer.DialogytplayerActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:76
+# view AndroidManifest.xml #generated:71
 -keep class com.my.newExplorer.DownloadActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:107
+# view AndroidManifest.xml #generated:102
 -keep class com.my.newExplorer.ErrorsActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:113
+# view AndroidManifest.xml #generated:108
 -keep class com.my.newExplorer.ExcleanerActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:36
--keep class com.my.newExplorer.HelpActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:51
+# view AndroidManifest.xml #generated:46
 -keep class com.my.newExplorer.HistoryActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:56
+# view AndroidManifest.xml #generated:51
 -keep class com.my.newExplorer.HtmlActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:46
+# view AndroidManifest.xml #generated:41
 -keep class com.my.newExplorer.InfoActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:26
 -keep class com.my.newExplorer.MainActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:93
+# view AndroidManifest.xml #generated:88
 -keep class com.my.newExplorer.NoInternetActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:100
+# view AndroidManifest.xml #generated:95
 -keep class com.my.newExplorer.PipmodeytActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:41
+# view AndroidManifest.xml #generated:36
 -keep class com.my.newExplorer.SettingsActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:18
 -keep class com.my.newExplorer.SketchApplication { <init>(...); }
 
-# view AndroidManifest.xml #generated:81
+# view AndroidManifest.xml #generated:76
 -keep class com.my.newExplorer.TextfileActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:87
+# view AndroidManifest.xml #generated:82
 -keep class com.my.newExplorer.ViewActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:68
+# view AndroidManifest.xml #generated:63
 -keep class com.my.newExplorer.YtplayerfullscreenActivity { <init>(...); }
 
 # view res/layout/dialogytplayer.xml #generated:293

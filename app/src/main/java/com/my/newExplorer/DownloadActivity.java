@@ -198,12 +198,19 @@ public class DownloadActivity extends AppCompatActivity {
 		folder = FileUtil.getExternalStorageDir().concat("/webview download");
 		_refreshList();
 		_language();
+		View a = getWindow().getDecorView();
+		a.setSystemUiVisibility(0);
 		if (mode.getString("darkmode", "").equals("true")) {
 			linear1.setBackgroundColor(0xFF212121);
 			linear2.setBackgroundColor(0xFF212121);
 			textview1.setTextColor(0xFFFFFFFF);
 			textview2.setTextColor(0xFFFFFFFF);
 			delete = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK);
+			if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+				Window w =DownloadActivity.this.getWindow();
+				w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+				w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFF000000);
+			}
 		}
 		else {
 			linear1.setBackgroundColor(0xFFFFFFFF);
@@ -211,6 +218,13 @@ public class DownloadActivity extends AppCompatActivity {
 			textview1.setTextColor(0xFF000000);
 			textview2.setTextColor(0xFF000000);
 			delete = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
+			getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+			getWindow().setStatusBarColor(0xFFFFFFFF);
+			if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+				Window w =DownloadActivity.this.getWindow();
+				w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+				w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFFFFFFFF);
+			}
 		}
 	}
 	

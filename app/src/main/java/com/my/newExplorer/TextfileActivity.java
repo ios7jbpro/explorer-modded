@@ -123,6 +123,8 @@ public class TextfileActivity extends AppCompatActivity {
 		else {
 			
 		}
+		View a = getWindow().getDecorView();
+		a.setSystemUiVisibility(0);
 		if (mode.getString("darkmode", "").equals("true")) {
 			vscroll1.setBackgroundColor(0xFF212121);
 			edittext1.setTextColor(0xFFFFFFFF);
@@ -131,6 +133,11 @@ public class TextfileActivity extends AppCompatActivity {
 			un.setImageResource(R.drawable.ic_undo_white);
 			re.setImageResource(R.drawable.ic_redo_white);
 			imageview1.setImageResource(R.drawable.ic_save_white);
+			if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+				Window w =TextfileActivity.this.getWindow();
+				w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+				w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFF000000);
+			}
 		}
 		else {
 			vscroll1.setBackgroundColor(0xFFFFFFFF);
@@ -140,6 +147,13 @@ public class TextfileActivity extends AppCompatActivity {
 			un.setImageResource(R.drawable.ic_undo_black);
 			re.setImageResource(R.drawable.ic_redo_black);
 			imageview1.setImageResource(R.drawable.ic_save_black);
+			getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+			getWindow().setStatusBarColor(0xFFFFFFFF);
+			if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+				Window w =TextfileActivity.this.getWindow();
+				w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+				w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFFFFFFFF);
+			}
 		}
 		_circleRipple("#9E9E9E", imageview1);
 		_circleRipple("#9E9E9E", un);

@@ -291,12 +291,19 @@ public class HtmlActivity extends AppCompatActivity {
 	
 	
 	public void _dark () {
+		View a = getWindow().getDecorView();
+		a.setSystemUiVisibility(0);
 		if (mode.getString("darkmode", "").equals("true")) {
 			textview1.setTextColor(0xFFFFFFFF);
 			dialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK);
 			linear1.setBackgroundColor(0xFF212121);
 			linear2.setBackgroundColor(0xFF212121);
 			vscroll1.setBackgroundColor(0xFF212121);
+			if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+				Window w =HtmlActivity.this.getWindow();
+				w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+				w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFF000000);
+			}
 		}
 		else {
 			textview1.setTextColor(0xFF000000);
@@ -304,6 +311,13 @@ public class HtmlActivity extends AppCompatActivity {
 			linear2.setBackgroundColor(0xFFFFFFFF);
 			vscroll1.setBackgroundColor(0xFFFFFFFF);
 			dialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
+			getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+			getWindow().setStatusBarColor(0xFFFFFFFF);
+			if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+				Window w =HtmlActivity.this.getWindow();
+				w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+				w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFFFFFFFF);
+			}
 		}
 	}
 	

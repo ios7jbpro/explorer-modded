@@ -34,11 +34,6 @@
 			</intent-filter>
 		</activity>
 		<activity
-			android:name=".HelpActivity"
-			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
-			android:hardwareAccelerated="true"
-			android:supportsPictureInPicture="true"/>
-		<activity
 			android:name=".SettingsActivity"
 			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
 			android:hardwareAccelerated="true"

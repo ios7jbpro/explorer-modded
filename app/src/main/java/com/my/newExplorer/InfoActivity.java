@@ -103,6 +103,8 @@ public class InfoActivity extends AppCompatActivity {
 	}
 	
 	private void initializeLogic() {
+		View a = getWindow().getDecorView();
+		a.setSystemUiVisibility(0);
 		if (mode.getString("darkmode", "").equals("true")) {
 			vscroll1.setBackgroundColor(0xFF212121);
 			linear8.setBackgroundColor(0xFF212121);
@@ -114,6 +116,11 @@ public class InfoActivity extends AppCompatActivity {
 			textview13.setTextColor(0xFFFFFFFF);
 			textview7.setTextColor(0xFFFFFFFF);
 			textview8.setTextColor(0xFFFFFFFF);
+			if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+				Window w =InfoActivity.this.getWindow();
+				w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+				w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFF000000);
+			}
 		}
 		else {
 			vscroll1.setBackgroundColor(0xFFFFFFFF);
@@ -126,6 +133,13 @@ public class InfoActivity extends AppCompatActivity {
 			textview13.setTextColor(0xFF000000);
 			textview8.setTextColor(0xFF000000);
 			textview7.setTextColor(0xFF000000);
+			getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+			getWindow().setStatusBarColor(0xFFFFFFFF);
+			if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+				Window w =InfoActivity.this.getWindow();
+				w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+				w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFFFFFFFF);
+			}
 		}
 		if (s.getString("language", "").equals("persian")) {
 			textview8.setText("توسعه دهندگان");
